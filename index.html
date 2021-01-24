@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Formulario1</title>
+	<title>Registro</title>
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/vendor/bootstrap.min.css">
 	<script>
@@ -16,69 +16,76 @@
 
     		frm.addEventListener('submit', function(e){
     			e.preventDefault();
-    			console.log("test!");
     			// check if the form is valid
-    			var valid = pst.validate(); // returns true or false
-    			frm.classList.add("was-validated");
+    			if(pst.validate()){
+    				procesarDatos();
+    			}else{
+    				frm.classList.add("was-validated");
+    			}
     		});
     		frm.addEventListener('reset', function(e){
     			frm.classList.remove("was-validated");
     		});
 		};
+
+		function procesarDatos(){
+			// url (required), options (optional)
+			fetch('scripts/script.php', {
+				method: 'post', 
+				body:new FormData(frm)
+			}).then(function(response) {
+				return response.json();
+			}).then(function(json) {
+				guardarLocal(json);
+			}).catch(function(err) {
+				// Error :(
+			});
+		}
+		function guardarLocal(json){
+			localStorage.setItem("usuario", JSON.stringify(json));
+			location.href = "login.html";
+		}
 	</script>
 </head>
 <body>
+	  <div class="logo" align="center">
+	  	 <img src="img/Registro.png" alt="">
+	  </div> 		
 	<form id="form-demo" novalidate method="post" class="container">
 		<input type="hidden" />
 	  <div class="form-group">
-		<label>required</label>
-		<input type="text" class="form-control" required />
+		<label>Nombre</label>
+		<input type="text" id="nombre" name="nombre" class="form-control" required />
 	  </div>
 	  <div class="form-group">
-	  	<label>minlength=5, but not required</label>
-	  	<input type="text" class="form-control" minlength=5 />
+	  	<label>Apellido</label>
+	  	<input type="text" id="apellido" name="apellido" class="form-control" required />
 	  </div>
 	  <div class="form-group">
-	    <label>type=email, not required</label>
-	    <input type="email" class="form-control" />
+	  	<label>Celular</label>
+	  	<input type="tel" id="celular" name="celular" class="form-control" required />
 	  </div>
 	  <div class="form-group">
-	  	<label>number, not required</label>
-	  	<input type="number" class="form-control" />
+	    <label>Correo electrónico</label>
+	    <input type="email" id="correo" name="correo" class="form-control" required />
 	  </div>
 	  <div class="form-group">
-	  	<label>number, min=100, not required </label>
-	  	<input type="number" class="form-control" min="100"/>
+	  	<label>Password</label>
+	  	<input type="password" id="clave1" name="clave1" class="form-control" required />
 	  </div>
 	  <div class="form-group">
-	  	<label>number, min=100, required </label>
-	  	<input type="number" class="form-control" min="100" required />
+	  	<label>Validar password</label>
+	  	<input type="password" id="clave2" name="clave2" class="form-control" required />
 	  </div>
 	  <div class="form-group">
-	  	<label> required </label>
-	  	<select required>
-	  		<option value="">-----</option>
-	  		<option value="bd">Bangladesh</option>
-	  		<option value="us">USA</option>
-	  		<option value="ca">Canada</option>
-	  	</select>
-	  </div>
-	  <div class="form-group form-check">
-	  	<p>required, min=2</p>
-	  	<input id="ch1" type="checkbox" min="2" class="form-check-input" name="future" required data-pristine-min-message="select at leats 2" />
-	  	<label for="ch1" class="form-check-label">Dhaka</label><br />
-	  	<input id="ch2" type="checkbox" min="2" class="form-check-input" name="future" required data-pristine-min-message="select at leats 2" />
-	  	<label for="ch2" class="form-check-label">Sylhet</label><br />
-	  	<input id="ch3" type="checkbox" min="2" class="form-check-input" name="future" required data-pristine-min-message="select at leats 2" />
-	  	<label for="ch3" class="form-check-label">Khulna</label><br />
-	  </div>
-	  <div class="form-group">
-	  	<label>pattern=/^\d+\.\{2}$/ (match decimal with 2 points), required</label>
-	  	<input type="number" class="form-control" pattern="/^\d+\.\d{2}$/g" required />
-	  </div>
-	  <div class="form-group">
-	  	<label>above field with custom message</label>
-	  	<input type="number" class="form-control" pattern="/^\d+\.\d{2}$/g" required data-pristine-pattern-message="The value must have 2 decimal points" />
+	  	<select required id="ciudad" name="ciudad" class="custom-select">
+	  		<option value="">Ciudad</option>
+	  		<option value="01">Medellín</option>
+	  		<option value="02">Bogotá</option>
+	  		<option value="03">Cartagena</option>
+	  		<option value="04">Cali</option>
+	  		<option value="05">Santa Marta</option>
+	  	</select>	
 	  </div>
 	  <div class="form-group">
 	  	<input type="submit" class="btn btn-primary" value="Enviar" />
