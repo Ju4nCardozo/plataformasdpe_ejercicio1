@@ -70,7 +70,7 @@ hr{
 	height: 600px;
 	background: url('../../img/showcase2.jpg') no-repeat center center/cover;
 	margin-bottom: 20px;
-	padding-bottom: 50px;
+	padding: 50px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -146,4 +146,20 @@ hr{
 
 .links a i{
 	font-size: 3rem;
+}
+
+@media (max-width: 700px){
+	.cartas{
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 500px){
+	.cartas{
+		grid-template-columns: 1fr;
+	}
+
+	.cartas{
+		height: 270px;
+	}
 }
