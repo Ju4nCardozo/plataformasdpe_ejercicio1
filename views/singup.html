@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Registro</title>
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/vendor/bootstrap.min.css">
 	<script>
 		let pst, frm;
 
@@ -30,7 +30,7 @@
 
 		function procesarDatos(){
 			// url (required), options (optional)
-			fetch('scripts/script.php', {
+			fetch('../scripts/script.php', {
 				method: 'post', 
 				body:new FormData(frm)
 			}).then(function(response) {
@@ -44,7 +44,7 @@
 		function guardarLocal(json){
 			localStorage.setItem("usuario", JSON.stringify(json));
 			location.href = "login.html";
-		}
+		} 
 	</script>
 </head>
 <body>
@@ -92,6 +92,6 @@
 	  	<input type="reset" class="btn btn-primary" value="Restablecer" />
 	  </div>
 	</form>
-	<script src="js/vendor/pristine.min.js"></script>
+	<script src="../js/vendor/pristine.min.js"></script>
 </body>
 </html>

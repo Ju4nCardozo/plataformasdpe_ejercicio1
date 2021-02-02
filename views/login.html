@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/vendor/bootstrap.min.css">
 	<script>
 		let frm, correo, pst;
 
@@ -37,7 +37,7 @@
 
 			let usuario = localStorage.getItem("usuario");
 			if(usuario){
-				fetch('scripts/script.php', {
+				fetch('../scripts/script.php', {
 					method: 'post', 
 					body:new FormData(frm)
 				}).then(function(response) {
@@ -65,6 +65,6 @@
 			<input type="submit" class="btn btn-primary" value="Ingresar">
 		</div>
 	</form>
-	<script src="js/vendor/pristine.min.js"></script>
+	<script src="../js/vendor/pristine.min.js"></script>
 </body>
 </html>
