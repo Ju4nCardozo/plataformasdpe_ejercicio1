@@ -28,8 +28,24 @@ ul {
 	font-size: 17px;
 }
 
+.container_gallery{
+	width: 90%;
+	margin: auto;
+	font-size: 17px;
+}
+
 /* Navegación */
 .nav-main{
+	font-size: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 60px;
+	padding: 20px 0;
+	
+}
+
+.nav-main_gallery{
 	font-size: 20px;
 	display: flex;
 	justify-content: space-between;
@@ -44,10 +60,22 @@ ul {
 	margin-top: 15px;
 }
 
+.nav-brand_gallery{
+	width: 50px;
+	margin-top: 15px;
+}
+
 .nav-main ul li a{
 	padding: 4px;
 }
+.nav-main_gallery ul li a{
+	padding: 4px;
+}
 .nav-main ul{
+	display: flex;
+}
+
+.nav-main_gallery ul{
 	display: flex;
 }
 
@@ -55,7 +83,15 @@ ul {
 	border-bottom: 2px solid #ffffff;
 }
 
+.nav-main_gallery ul li a:hover{
+	border-bottom: 2px solid #ffffff;
+}
+
 .nav-main ul li{
+	padding: 10px;
+}
+
+.nav-main_gallery ul li{
 	padding: 10px;
 }
 
@@ -66,6 +102,18 @@ hr{
 }
 
 .showcase{
+	width: 100%;
+	height: 600px;
+	background: url('../../img/showcase2.jpg') no-repeat center center/cover;
+	margin-bottom: 20px;
+	padding: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.showcase_gallery{
 	width: 100%;
 	height: 600px;
 	background: url('../../img/showcase2.jpg') no-repeat center center/cover;
@@ -98,6 +146,11 @@ hr{
 	margin: 10px;
 }
 
+.showcase_gallery h2, 
+.showcase_gallery p{
+	margin: 10px;
+}
+
 .cartas{
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -105,7 +158,19 @@ hr{
 	margin: 10px 0;
 }
 
+.cartas_gallery{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 25px;
+	margin: 10px 0;
+}
+
 .cartas img{
+	width: 100%;
+	height: 200px;
+}
+
+.cartas_gallery img{
 	width: 100%;
 	height: 200px;
 }
@@ -118,7 +183,19 @@ hr{
 	font-weight: bold;
 }
 
+.cartas_gallery a{
+	padding: 10px 0;
+	color: #f2f2f2;
+	text-transform: uppercase;
+	display: inline-block;
+	font-weight: bold;
+}
+
 .cartas a:hover{
+	text-decoration: underline;
+}
+
+.cartas_gallery a:hover{
 	text-decoration: underline;
 }
 
@@ -128,7 +205,11 @@ hr{
 	margin: 50px;
 }
 
-.social p{
+.contact{
+	margin: 50px;
+}
+
+.contact p{
 	text-align: center;
 	font-size: 30px;
 	margin-bottom: 20px;
@@ -154,6 +235,12 @@ hr{
 	}
 }
 
+@media (max-width: 700px){
+	.cartas_gallery{
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
 @media (max-width: 500px){
 	.cartas{
 		grid-template-columns: 1fr;
@@ -163,3 +250,14 @@ hr{
 		height: 270px;
 	}
 }
+
+@media (max-width: 500px){
+	.cartas_gallery{
+		grid-template-columns: 1fr;
+	}
+
+	.cartas_gallery{
+		height: 270px;
+	}
+}
+
